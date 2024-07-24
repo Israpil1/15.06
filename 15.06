@@ -1,0 +1,59 @@
+// Задание 1
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Введите предложение:");
+        string sentence = Console.ReadLine().ToLower();
+
+        int vowelCount = 0;
+        string vowels = "aeiouаеёиоуыэюя";
+
+        foreach (char c in sentence)
+        {
+            if (vowels.Contains(c))
+            {
+                vowelCount++;
+            }
+        }
+
+        Console.WriteLine($"Количество гласных букв: {vowelCount}");
+    }
+}
+
+// Задание 2
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Введите исходную строку:");
+        string originalString = Console.ReadLine().ToLower(); 
+
+        Console.WriteLine("Введите подстроку для поиска:");
+        string substring = Console.ReadLine().ToLower(); 
+
+        int occurrences = CountSubstringOccurrences(originalString, substring);
+
+        Console.WriteLine($"Количество вхождений подстроки: {occurrences}");
+    }
+
+    static int CountSubstringOccurrences(string original, string sub)
+    {
+        int count = 0;
+        int index = original.IndexOf(sub);
+
+        while (index != -1)
+        {
+            count++;
+            index = original.IndexOf(sub, index + 1);
+        }
+
+        return count;
+    }
+}
